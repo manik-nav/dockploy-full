@@ -1,0 +1,31 @@
+<section class="user-list-container">
+  <div class="page-header">
+    <h1>Team Directory</h1>
+    <p>Meet our talented team members</p>
+  </div>
+
+  <div class="user-grid">
+    @for (user of users; track user.id) {
+      <a class="user-card" [routerLink]="['/users', user.id]">
+        <div class="card-avatar">
+          <img [src]="user.imageUrl" [alt]="user.name + ' avatar'" />
+        </div>
+        <div class="card-info">
+          <h2 class="card-name">{{ user.name }}</h2>
+          <p class="card-email">
+            <span class="icon" aria-hidden="true">✉</span>
+            {{ user.email }}
+          </p>
+          <p class="card-phone">
+            <span class="icon" aria-hidden="true">☎</span>
+            {{ user.phone }}
+          </p>
+          <p class="card-location">
+            <span class="icon" aria-hidden="true">📍</span>
+            {{ user.address.city }}, {{ user.address.state }}
+          </p>
+        </div>
+      </a>
+    }
+  </div>
+</section>

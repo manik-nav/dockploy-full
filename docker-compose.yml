@@ -1,0 +1,14 @@
+services:
+  app:
+    build: ./web
+    expose:
+      - "80"
+
+    labels:
+      - "traefik.enable=true"
+
+      - "traefik.http.routers.app.rule=Host(`test.intillo.com`)"
+      - "traefik.http.routers.app.entrypoints=websecure"
+      - "traefik.http.routers.app.tls=true"
+
+      - "traefik.http.services.app.loadbalancer.server.port=80"

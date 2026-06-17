@@ -1,0 +1,62 @@
+@if (user(); as u) {
+  <section class="user-detail-container">
+    <a routerLink="/users" class="back-link">
+      <span aria-hidden="true">←</span> Back to Directory
+    </a>
+
+    <div class="profile-hero">
+      <div class="hero-avatar">
+        <img [src]="u.imageUrl" [alt]="u.name + ' profile photo'" />
+      </div>
+      <div class="hero-info">
+        <h1>{{ u.name }}</h1>
+        <p class="hero-location">{{ u.address.city }}, {{ u.address.state }}</p>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h2>Contact Information</h2>
+        <dl>
+          <div class="detail-row">
+            <dt>Email</dt>
+            <dd>{{ u.email }}</dd>
+          </div>
+          <div class="detail-row">
+            <dt>Phone</dt>
+            <dd>{{ u.phone }}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="detail-card">
+        <h2>Address</h2>
+        <dl>
+          <div class="detail-row">
+            <dt>Street</dt>
+            <dd>{{ u.address.street }}</dd>
+          </div>
+          <div class="detail-row">
+            <dt>City</dt>
+            <dd>{{ u.address.city }}, {{ u.address.state }} {{ u.address.zip }}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="detail-card bio-card">
+        <h2>About</h2>
+        <p class="bio-text">{{ u.bio }}</p>
+      </div>
+    </div>
+  </section>
+} @else {
+  <section class="user-detail-container">
+    <a routerLink="/users" class="back-link">
+      <span aria-hidden="true">←</span> Back to Directory
+    </a>
+    <div class="not-found">
+      <h1>User Not Found</h1>
+      <p>The user you're looking for doesn't exist.</p>
+    </div>
+  </section>
+}
