@@ -1,5 +1,7 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { switchMap } from 'rxjs';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -13,8 +15,9 @@ export class UserDetail {
 
   private readonly userService = inject(UserService);
 
-  protected readonly user = computed(() => {
-    const id = Number(this.id());
-    return this.userService.getUserById(id);
-  });
+  protected readonly user = toSignal(
+    toObservable(this.id).pipe(
+      switchMap(id => this.userService.getUserById(Number(id)))
+    )
+  );
 }

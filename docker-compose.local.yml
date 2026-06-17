@@ -1,0 +1,21 @@
+# Local development override - use with: docker-compose -f docker-compose.yml -f docker-compose.local.yml up
+services:
+  web:
+    ports:
+      - "4200:80"
+    networks:
+      - default
+    labels: []
+
+  api:
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - default
+
+networks:
+  dokploy-network:
+    external: false
+    name: local-network

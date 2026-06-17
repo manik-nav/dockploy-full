@@ -5,7 +5,7 @@
   </div>
 
   <div class="user-grid">
-    @for (user of users; track user.id) {
+    @for (user of users$ | async; track user.id) {
       <a class="user-card" [routerLink]="['/users', user.id]">
         <div class="card-avatar">
           <img [src]="user.imageUrl" [alt]="user.name + ' avatar'" />

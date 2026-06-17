@@ -1,14 +1,30 @@
 services:
-  app:
+  web:
     build: ./web
+    restart: unless-stopped
     expose:
       - "80"
-
+    depends_on:
+      - api
+    networks:
+      - dokploy-network
     labels:
       - "traefik.enable=true"
+      - "traefik.http.routers.web.rule=Host(`${DOMAIN:-test.intillo.com}`)"
+      - "traefik.http.routers.web.entrypoints=websecure"
+      - "traefik.http.routers.web.tls.certresolver=letsencrypt"
+      - "traefik.http.services.web.loadbalancer.server.port=80"
 
-      - "traefik.http.routers.app.rule=Host(`test.intillo.com`)"
-      - "traefik.http.routers.app.entrypoints=websecure"
-      - "traefik.http.routers.app.tls=true"
+  api:
+    build: ./api/api
+    restart: unless-stopped
+    expose:
+      - "8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    networks:
+      - dokploy-network
 
-      - "traefik.http.services.app.loadbalancer.server.port=80"
+networks:
+  dokploy-network:
+    external: true
