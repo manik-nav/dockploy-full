@@ -46,3 +46,13 @@ Thumbs.db
 api/api/.vs/
 api/api/api/bin/
 api/api/api/obj/
+
+# Environment files
+.env
+!.env.example
+
+# Playwright
+playwright-report/
+playwright/.cache/
+test-results/
+
