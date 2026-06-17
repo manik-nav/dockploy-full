@@ -65,6 +65,14 @@ var users = new List<User>
         new Address("1052 Chestnut Avenue", "Philadelphia", "PA", "19101"),
         "Ryan is a backend engineer specializing in high-performance distributed databases and real-time data processing. He contributed to several open-source projects including Apache Kafka plugins. When he's not optimizing query performance, he enjoys brewing craft beer and playing chess competitively.",
         "https://i.pravatar.cc/300?img=13"),
+    new(11, "Sofia Martinez", "sofia.martinez@example.com", "(555) 234-5679",
+        new Address("445 Magnolia Drive", "San Diego", "CA", "92101"),
+        "Sofia is a cloud infrastructure engineer with deep expertise in AWS and Kubernetes. She has architected multi-region deployments handling millions of requests per second. A former competitive swimmer, she brings the same discipline and endurance to tackling complex technical challenges.",
+        "https://i.pravatar.cc/300?img=23"),
+    new(12, "Ethan Brooks", "ethan.brooks@example.com", "(555) 345-6780",
+        new Address("789 Aspen Circle", "Nashville", "TN", "37201"),
+        "Ethan is a frontend engineer who specializes in building accessible and performant web applications. He is a core contributor to several popular UI component libraries and frequently writes about modern JavaScript frameworks. In his spare time, he produces electronic music and runs a podcast about web development.",
+        "https://i.pravatar.cc/300?img=15"),
 };
 
 // API Endpoints
